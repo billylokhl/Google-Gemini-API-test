@@ -35,7 +35,7 @@ def ask(
         # return response.text
         thought = "\n**Thought**\n\n"
         answer = "\n**Response**\n\n"
-        
+
         if response.candidates and response.candidates[0].content and response.candidates[0].content.parts:
             for part in response.candidates[0].content.parts:
                 if not part.text:
@@ -53,9 +53,9 @@ def ask(
 demo = gr.Interface(
     fn=ask,
     inputs=[
-        gr.Textbox(label="User Prompt"), 
-        gr.Radio(choices=[True, False], label="Include Thoughts", type="index"), 
-        gr.Radio(choices=[-1, 0, 1024, 4096], label="Thinking Budget", type="index")
+        gr.Textbox(label="User Prompt"),
+        gr.Radio(choices=[True, False], label="Include Thoughts", type="value"),
+        gr.Radio(choices=[-1, 0, 1024, 4096], label="Thinking Budget", type="value")
     ],
     outputs=[gr.Markdown(), gr.Markdown()],
     title="Local LLM Chat Interface",
